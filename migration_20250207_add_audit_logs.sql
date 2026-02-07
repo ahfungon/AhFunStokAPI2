@@ -18,11 +18,12 @@ CREATE TABLE IF NOT EXISTS `config_audit_logs` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='配置变更审计日志';
 
 -- 添加索引优化（如果原表没有）
+-- 注意：MySQL 8.0+ 支持 IF NOT EXISTS，但如果版本不支持，可以手动检查
 ALTER TABLE `portfolio_configs` 
-ADD INDEX IF NOT EXISTS `idx_account_revision` (`account_id`, `revision`);
+ADD INDEX `idx_account_revision` (`account_id`, `revision`);
 
 ALTER TABLE `portfolio_configs`
-ADD INDEX IF NOT EXISTS `idx_updated_at` (`updated_at`);
+ADD INDEX `idx_updated_at` (`updated_at`);
 
 -- 查看审计日志的示例查询
 -- SELECT * FROM config_audit_logs WHERE account_id = 1 ORDER BY created_at DESC LIMIT 100;

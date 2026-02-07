@@ -1,4 +1,7 @@
 # pip install -r requirements.txt
+# AhFunStokAPI2 - 锁定依赖版本
+# 更新时间: 2026-02-07
+
 blinker==1.6.2
 cffi==1.16.0
 click==8.1.7
@@ -17,3 +20,6 @@ PyMySQL==1.1.0
 SQLAlchemy==2.0.21
 typing_extensions==4.8.0
 Werkzeug==3.0.0
+
+# 生产服务器依赖
+gunicorn==21.2.0

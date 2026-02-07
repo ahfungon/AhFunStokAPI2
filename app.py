@@ -23,6 +23,7 @@ import time
 
 from werkzeug.security import generate_password_hash, check_password_hash
 from sqlalchemy.exc import IntegrityError, OperationalError
+from sqlalchemy import text
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://ahfunstock:81188118@localhost/api.ahfun.me'
@@ -800,7 +801,7 @@ def health_check():
     """健康检查接口"""
     try:
         # 检查数据库连接
-        db.session.execute('SELECT 1')
+        db.session.execute(text('SELECT 1'))
         return jsonify({
             'status': 'healthy',
             'database': 'connected',
